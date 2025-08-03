@@ -2,7 +2,6 @@ streamlit
 langchain
 langchain_community
 langgraph
+langchain_groq
 langchain-google-genai
 google-generativeai
-duckduckgo-search
-wikipedia
