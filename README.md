@@ -8,9 +8,9 @@ This is an Agentic AI system that acts like a seasoned Product Manager. Given an
 
 It has been made using open source libraries and below are the details on the same:
 
-Langgraph framework to design Agentic AI architecture
-Langchain
-HuggingFace for generating vector embeddings
-Google Gemini for LLM model
-Streamlit for the application
+1. Langgraph framework to design Agentic AI architecture
+2. Langchain for using the capabilities of LLM
+3. Google Gemini for LLM model
+4. Streamlit for the application
+
 Please feel free to test the application at: https://agentic-pm-mrlmho6b2rzegi8fwvakbs.streamlit.app/
