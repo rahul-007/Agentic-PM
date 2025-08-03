@@ -17,12 +17,10 @@ from dotenv import load_dotenv
 # os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
 # load_dotenv()
 # genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
-
-groq_api_key = st.sidebar.text_input("Enter your Groq API Key", type='password')
+groq_api_key = st.secrets["GROQ_API_KEY"]
 
 # 2. Initialize Gemini LLM
-if groq_api_key:
-    llm = ChatGroq(model="Llama3-70b-8192",groq_api_key=groq_api_key)
+llm = ChatGroq(model="Llama3-70b-8192",groq_api_key=groq_api_key)
 # llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
 
 # 3. Agent Helper Functions
@@ -102,3 +100,4 @@ def run_pm_agent(problem_statement: str):
     print(final_state["output"])
 
     return final_state
+
