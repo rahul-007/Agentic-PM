@@ -2,6 +2,7 @@ import os
 import streamlit as st
 from langchain_core.runnables import Runnable
 from langgraph.graph import END, StateGraph
+from langchain_groq import ChatGroq
 import google.generativeai as genai
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage
@@ -12,13 +13,17 @@ from langchain.agents.agent_types import AgentType
 from langchain_community.utilities import WikipediaAPIWrapper
 from dotenv import load_dotenv
 
-# 1. Setup Google Gemini API Key
-os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
+# 1. Setup Groq API Key
+# os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
 # load_dotenv()
 # genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
+groq_api_key = st.sidebar.text_input("Enter your Groq API Key", type='password')
+
 # 2. Initialize Gemini LLM
-llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
+if groq_api_key:
+    llm = ChatGroq(model="Llama3-70b-8192",groq_api_key=groq_api_key)
+# llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
 
 # 3. Agent Helper Functions
 
@@ -95,4 +100,5 @@ def run_pm_agent(problem_statement: str):
     final_state = pm_graph.invoke({"input": problem_statement})
     print("\n Final Output:\n")
     print(final_state["output"])
+
     return final_state
