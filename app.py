@@ -16,11 +16,14 @@ if st.button("🚀 Run Agentic PM"):
         st.warning("Please enter a valid problem statement.")
     else:
         with st.spinner("Thinking like a PM..."):
-            # Expandable section for entire trace
-            with st.expander("🧠 Full PM Thought Process"):
-                st.text(output["history"])
-                
+            
             output = run_pm_agent(problem_input)
             st.success("Agentic PM completed!")
+
+            # Expandable section for entire trace
+            with st.expander("🧠 Full PM Thought Process"):
+            st.text(output["history"])
+            
             st.subheader("📋 Final Output")
             st.markdown(output["output"])
+
