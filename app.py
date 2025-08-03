@@ -22,8 +22,9 @@ if st.button("🚀 Run Agentic PM"):
 
             # Expandable section for entire trace
             with st.expander("🧠 Full PM Thought Process"):
-            st.text(output["history"])
+                st.text(output["history"])
             
             st.subheader("📋 Final Output")
             st.markdown(output["output"])
+
 
